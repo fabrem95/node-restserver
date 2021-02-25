@@ -13,7 +13,7 @@ const {
 const { isValidRole, 
         isValidEmail, 
         isValidUserId,
-        validateState
+        validateUserState
     } = require('../helpers/db-validators');
 
 const { getUser,
@@ -53,7 +53,7 @@ router.delete('/:id',
     hasRole('ADMIN_ROLE', 'USER_ROLE'),
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(isValidUserId), 
-    check('id').custom(validateState), 
+    check('id').custom(validateUserState), 
     validateFields,
 deleteUser)
 

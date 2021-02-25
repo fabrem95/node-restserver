@@ -1,5 +1,5 @@
+const { Usuario, Categoria, Producto } = require('../models')
 const Role = require('../models/role')
-const Usuario = require('../models/usuario')
 
 const checkLogin = async (email) => {
 
@@ -38,7 +38,25 @@ const isValidUserId = async (id) => {
     }
 }
 
-const validateState = async (id) => {
+const isValidCategoryId = async (id) => {
+
+    const existCategoryId = await Categoria.findById(id);
+
+    if (!existCategoryId) {
+        throw new Error(`No existe categoria con el id ${id}`)
+    }
+}
+
+const isValidProductId = async (id) => {
+
+    const existProductId = await Producto.findById(id);
+
+    if (!existProductId) {
+        throw new Error(`No existe producto con el id ${id}`)
+    }
+}
+
+const validateUserState = async (id) => {
 
     const isStateTrue = await Usuario.find({_id: id, state: true});
 
@@ -47,10 +65,32 @@ const validateState = async (id) => {
     }
 }
 
+const validateCategoryState = async (id) => {
+
+    const isStateTrue = await Categoria.find({_id: id, state: true});
+
+    if (!isStateTrue || isStateTrue.length == 0) {
+        throw new Error('La categoria que desea eliminar no existe')
+    }
+}
+
+const validateProductState = async (id) => {
+
+    const isStateTrue = await Producto.find({_id: id, state: true});
+
+    if (!isStateTrue || isStateTrue.length == 0) {
+        throw new Error('El producto que desea eliminar no existe')
+    }
+}
+
 module.exports = {
     isValidRole,
     isValidEmail,
     isValidUserId,
-    validateState,
+    isValidCategoryId,
+    isValidProductId,
+    validateUserState,
+    validateCategoryState,
+    validateProductState,
     checkLogin,
 }
