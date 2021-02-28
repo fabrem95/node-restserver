@@ -5,9 +5,9 @@ const {
     login, 
     googleLogin } = require('../controllers/auth');
 
-const { checkLogin } = require('../helpers/db-validators');
+const { checkLogin } = require('../helpers');
 
-const { validateFields } = require('../middlewares/validate-fields');
+const { validateFields } = require('../middlewares');
 
 const router = Router()
 

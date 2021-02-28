@@ -12,7 +12,7 @@ const {
 const { 
     isValidProductId, 
     validateProductState
-} = require('../helpers/db-validators');
+} = require('../helpers');
 
 const {
     validateFields, 

@@ -14,7 +14,7 @@ const { isValidRole,
         isValidEmail, 
         isValidUserId,
         validateUserState
-    } = require('../helpers/db-validators');
+    } = require('../helpers');
 
 const { getUser,
         createUser,

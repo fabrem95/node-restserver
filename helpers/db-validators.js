@@ -1,5 +1,4 @@
-const { Usuario, Categoria, Producto } = require('../models')
-const Role = require('../models/role')
+const { Usuario, Categoria, Producto, Role } = require('../models')
 
 const checkLogin = async (email) => {
 
@@ -27,6 +26,16 @@ const isValidRole = async (role = '') => {
     if (!existRole) {
         throw new Error(`El rol ${role} no esta registrado en la base de datos`)
     }
+}
+
+const isValidCollection = async ( collection = '', validCollections = [] ) => {
+
+    const includesCollection = validCollections.includes(collection)
+
+    if (!includesCollection) {
+        throw new Error(`${collection} no es una colección válida - ${validCollections}`)
+    }
+    return true
 }
 
 const isValidUserId = async (id) => {
@@ -86,6 +95,7 @@ const validateProductState = async (id) => {
 module.exports = {
     isValidRole,
     isValidEmail,
+    isValidCollection,
     isValidUserId,
     isValidCategoryId,
     isValidProductId,

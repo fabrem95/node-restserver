@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose') 
-//const uniqueValidator = require('mongoose-unique-validator')
 
 const usuarioSchema = new Schema({
     name: {
@@ -23,7 +22,7 @@ const usuarioSchema = new Schema({
         required: [true, 'El rol es necesario'],
         default: 'CLIENT_ROLE',
         enum: {
-            values: ['USER_ROLE', 'CLIENT_ROLE'],
+            values: ['ADMIN_ROLE', 'USER_ROLE', 'CLIENT_ROLE'],
             message: '{VALUE} no es un rol valido'
         }
     },

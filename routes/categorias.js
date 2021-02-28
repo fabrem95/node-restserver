@@ -1,5 +1,6 @@
 const {Router} = require('express');
 const { check } = require('express-validator');
+
 const { 
     createCategory, 
     getCategories, 
@@ -11,7 +12,7 @@ const {
 const { 
     validateCategoryState, 
     isValidCategoryId, 
-} = require('../helpers/db-validators');
+} = require('../helpers');
 
 const {
     validateFields, 
